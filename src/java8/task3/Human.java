@@ -14,12 +14,12 @@ public class Human implements HumanBehavior {
         this.name = name;
         this.age = age;
         this.idNumber = idNumber;
-        this.job=job;
+        this.job = job;
     }
 
     @Override
     public void work() {
-      job.work();
+        job.work();
     }
 
     public String getName() {

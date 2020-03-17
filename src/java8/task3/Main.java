@@ -26,18 +26,18 @@ public class Main {
         consumer.accept("hello");
     }
 
-    static void myInterfaceImpl(){
+    static void myInterfaceImpl() {
         HumanBehavior programmerBehavior = () -> System.out.println("writing code");
         HumanBehavior cookBehavior = () -> System.out.println("Cooking delicious food");
-        HumanBehavior singerBehavior=new HumanBehavior(){
+        HumanBehavior singerBehavior = new HumanBehavior() {
             @Override
-            public void work(){
+            public void work() {
                 System.out.println("Singing a song");
             }
         };
-        Human Karine=new Human("Karine",19,1234567,programmerBehavior);
-        Human Ashot=new Human("Ashot", 40, 65437, cookBehavior);
-        Human Alla=new Human("Alla",13, 452796, singerBehavior);
+        Human Karine = new Human("Karine", 19, 1234567, programmerBehavior);
+        Human Ashot = new Human("Ashot", 40, 65437, cookBehavior);
+        Human Alla = new Human("Alla", 13, 452796, singerBehavior);
         Karine.work();
         Ashot.work();
         Alla.work();

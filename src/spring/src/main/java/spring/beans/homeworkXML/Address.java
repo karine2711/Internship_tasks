@@ -1,6 +1,8 @@
 package spring.beans.homeworkXML;
 
-public class Address {
+import java.awt.*;
+
+public class Address{
     private String country;
     private String city;
     private String street;

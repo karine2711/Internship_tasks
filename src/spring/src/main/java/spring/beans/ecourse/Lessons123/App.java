@@ -1,4 +1,4 @@
-package spring.beans.ecourse;
+package spring.beans.ecourse.Lessons123;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,7 +8,7 @@ public class App {
     ConsoleEventLogger eventLogger;
 
     public static void main(String[] args) {
-        ApplicationContext context=new ClassPathXmlApplicationContext("ecourse.xml");
+        ApplicationContext context=new ClassPathXmlApplicationContext("ecourse/lessons2and3.xml");
         App app=context.getBean("app", App.class);
         app.logEvent("Some event for 1");
         app.logEvent("Some event for 2");

@@ -5,14 +5,14 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="client" class="spring.beans.ecourse.Client">
+    <bean id="client" class="spring.beans.ecourse.Lessons123.Client">
         <constructor-arg value="1"/>
         <constructor-arg  value="John Smith"/>
     </bean>
 
-    <bean id="eventLogger" class="spring.beans.ecourse.ConsoleEventLogger"/>
+    <bean id="eventLogger" class="spring.beans.ecourse.Lessons123.ConsoleEventLogger"/>
 
-    <bean id="app" class="spring.beans.ecourse.App">
+    <bean id="app" class="spring.beans.ecourse.Lessons123.App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>
     </bean>

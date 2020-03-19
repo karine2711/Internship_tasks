@@ -1,4 +1,4 @@
-package spring.beans.ecourse;
+package spring.beans.ecourse.Lessons123;
 
 public class Client {
     private int id;

@@ -1,4 +1,4 @@
-package spring.beans.classwork;
+package spring.beans.classwork.postprocessors;
 
 import org.springframework.beans.factory.InitializingBean;
 

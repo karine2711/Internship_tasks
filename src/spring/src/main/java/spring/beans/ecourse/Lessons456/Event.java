@@ -17,6 +17,6 @@ public class Event {
         return "Event{" +
                 "date=" + date +
                 ", df=" + df +
-                '}';
+                '}'+this.hashCode();
     }
 }

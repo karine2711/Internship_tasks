@@ -5,4 +5,18 @@
 
     <import resource="lessons2and3.xml" />
     <import resource="lessons456.xml"/>
+    <import resource="lessons789.xml"/>
+
+    <bean id="app" class="spring.beans.ecourse.App">
+        <constructor-arg ref="client"></constructor-arg>
+        <constructor-arg ref="consoleEventLogger"/>
+        <constructor-arg>
+            <map key-type="spring.beans.ecourse.Lessons789.LoggerType" value-type="spring.beans.ecourse.Lessons456.EventLogger">
+                <entry key="INFO" value-ref="consoleEventLogger" />
+
+                <entry key="ERROR" value-ref="combinedEventLogger" />
+            </map>
+        </constructor-arg>
+    </bean>
+
 </beans>

@@ -1,5 +1,6 @@
 package spring.beans.ecourse;
 
+import jdk.jfr.EventType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,34 +9,38 @@ import spring.beans.ecourse.Lessons123.Client;
 import spring.beans.ecourse.Lessons123.ConsoleEventLogger;
 import spring.beans.ecourse.Lessons456.Event;
 import spring.beans.ecourse.Lessons456.EventLogger;
+import spring.beans.ecourse.Lessons789.LoggerType;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class App {
     Client client;
-    ConsoleEventLogger eventLogger;
+    EventLogger eventLogger;
+    Map<LoggerType, EventLogger> loggerMap;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("ecourse/ecourse.xml");
         App app = context.getBean("app", App.class);
-        app.logEvent("Some event for 1");
-        app.logEvent("Some event for 2");
-        EventLogger cacheFileLogger = context.getBean("cacheFileLogger", EventLogger.class);
-        Event event = context.getBean("event", Event.class);
-        cacheFileLogger.logEvent(event);
-        cacheFileLogger.logEvent(context.getBean("event", Event.class));
-        cacheFileLogger.logEvent(context.getBean("event", Event.class));
-        cacheFileLogger.logEvent(context.getBean("event", Event.class));
+        Supplier<Event> event=()->context.getBean("event", Event.class);
+        app.logEvent(event.get(),LoggerType.INFO);
+        app.logEvent(event.get(),LoggerType.ERROR);
+        app.logEvent(event.get(),LoggerType.ERROR);
+        app.logEvent(event.get(),LoggerType.INFO);
+
+
         context.close();
     }
 
-    private void logEvent(String msg) {
-        String message = msg.replaceAll(Integer.toString(client.getId()), client.getFullName());
-        eventLogger.logEvent(message);
+    private void logEvent(Event event, LoggerType type) {
+        EventLogger logger=loggerMap.get(type);
+        logger.logEvent(event);
     }
 
-    public App(Client client, ConsoleEventLogger eventLogger) {
+    public App(Client client,  EventLogger logger,Map<LoggerType, EventLogger> loggerMap) {
         this.client = client;
-        this.eventLogger = eventLogger;
+        this.eventLogger = logger;
+        this.loggerMap = loggerMap;
     }
 }

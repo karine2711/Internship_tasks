@@ -1,8 +1,13 @@
 package spring.beans.ecourse.Lessons123;
 
-public class ConsoleEventLogger {
+import spring.beans.ecourse.Lessons456.Event;
+import spring.beans.ecourse.Lessons456.EventLogger;
 
-    public void logEvent(String msg){
-        System.out.println(msg);
+public class ConsoleEventLogger implements EventLogger {
+
+
+    @Override
+    public void logEvent(Event event) {
+        System.out.println(event);
     }
 }

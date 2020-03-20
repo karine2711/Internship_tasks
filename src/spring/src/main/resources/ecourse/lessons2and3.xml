@@ -8,13 +8,11 @@
     <bean id="client" class="spring.beans.ecourse.Lessons123.Client">
         <constructor-arg value="1"/>
         <constructor-arg  value="John Smith"/>
+        <property name="greeting" value="Hi buddy!"/>
     </bean>
 
-    <bean id="eventLogger" class="spring.beans.ecourse.Lessons123.ConsoleEventLogger"/>
+    <bean id="consoleEventLogger" class="spring.beans.ecourse.Lessons123.ConsoleEventLogger"/>
 
-    <bean id="app" class="spring.beans.ecourse.App">
-        <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
-    </bean>
+
 
 </beans>

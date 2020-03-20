@@ -17,4 +17,6 @@
         <constructor-arg value="log.txt"/>
     </bean>
 
+    <bean id="cacheFileLogger" class="spring.beans.ecourse.Lessons456.CacheFileEventLogger"
+          destroy-method="destroy"/>
 </beans>

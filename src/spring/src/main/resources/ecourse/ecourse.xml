@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <import resource="lessons2and3.xml" />
+    <import resource="lessons2and3.xml"/>
     <import resource="lessons456.xml"/>
     <import resource="lessons789.xml"/>
 
-    <bean id="app" class="spring.beans.ecourse.App">
-        <constructor-arg ref="client"></constructor-arg>
-        <constructor-arg ref="consoleEventLogger"/>
-        <constructor-arg>
-            <map key-type="spring.beans.ecourse.Lessons789.LoggerType" value-type="spring.beans.ecourse.Lessons456.EventLogger">
-                <entry key="INFO" value-ref="consoleEventLogger" />
+    <bean id="app" class="spring.beans.ecourse.App" c:client-ref="client"
+          c:logger-ref="consoleEventLogger" c:loggerMap-ref="map"/>
 
-                <entry key="ERROR" value-ref="combinedEventLogger" />
-            </map>
-        </constructor-arg>
-    </bean>
-
+    <util:map id="map" key-type="spring.beans.ecourse.Lessons789.LoggerType"
+              value-type="spring.beans.ecourse.Lessons456.EventLogger">
+        <entry key="INFO" value-ref="consoleEventLogger"/>
+        <entry key="ERROR" value-ref="combinedEventLogger"/>
+    </util:map>
 </beans>

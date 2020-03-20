@@ -3,11 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="event" scope="prototype">
+    <bean id="event" scope="prototype" class="spring.beans.ecourse.Lessons456.Event">
         <constructor-arg>
             <bean class="java.util.Date" />
         </constructor-arg>
+        <constructor-arg ref="dateFormat" />
     </bean>
 
-    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"></bean>
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance" />
+
+    <bean id="fileLogger" class="spring.beans.ecourse.Lessons456.FileEventLogger" init-method="init">
+
+        <constructor-arg value="log.txt"/>
+    </bean>
+
 </beans>

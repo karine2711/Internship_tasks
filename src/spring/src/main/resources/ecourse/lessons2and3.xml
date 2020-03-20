@@ -12,7 +12,7 @@
 
     <bean id="eventLogger" class="spring.beans.ecourse.Lessons123.ConsoleEventLogger"/>
 
-    <bean id="app" class="spring.beans.ecourse.Lessons123.App">
+    <bean id="app" class="spring.beans.ecourse.App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>
     </bean>

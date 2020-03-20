@@ -18,5 +18,5 @@
     </bean>
 
     <bean id="cacheFileLogger" class="spring.beans.ecourse.Lessons456.CacheFileEventLogger"
-          destroy-method="destroy"/>
+          destroy-method="destroy" parent="fileLogger"/>
 </beans>

@@ -12,14 +12,13 @@ public class FileEventLogger implements EventLogger {
 
     String fileName;
     File file;
-   // FileWriter writer;
+
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
     }
 
-    protected FileEventLogger() {
-    }
+
 
     @Override
     public void logEvent(Event event) {

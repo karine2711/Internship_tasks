@@ -16,7 +16,7 @@ public class App {
     ConsoleEventLogger eventLogger;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("ecourse/lessons2and3.xml", "ecourse/lessons45.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("ecourse/ecourse.xml");
         App app = context.getBean("app", App.class);
         app.logEvent("Some event for 1");
         app.logEvent("Some event for 2");

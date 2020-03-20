@@ -1,11 +1,8 @@
 package spring.beans.ecourse.Lessons456;
 
-import javafx.application.Application;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +10,10 @@ public class CacheFileEventLogger extends FileEventLogger {
     int cacheSize=3;
 
     List<Event> cache=new ArrayList<>();
+
+    public CacheFileEventLogger(String fileName) {
+        super(fileName);
+    }
 
     @Override
     public void logEvent(Event event) {
@@ -27,10 +28,10 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     private void writeEventsFromCache() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("ecourse/lessons45.xml");
-        FileEventLogger logger = context.getBean("fileLogger", FileEventLogger.class);
+        ApplicationContext context = new ClassPathXmlApplicationContext("ecourse/lessons456.xml");
+
         for (Event event : cache) {
-            logger.logEvent(event);
+            super.logEvent(event);
         }
 
     }
@@ -41,4 +42,6 @@ public class CacheFileEventLogger extends FileEventLogger {
             writeEventsFromCache();
         }
     }
+
+
 }

@@ -13,7 +13,7 @@ import spring.beans.ecourse.Lessons789.LoggerType;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@Component("app")
+//@Component("app")
 public class App {
     Client client;
     EventLogger eventLogger;
@@ -36,10 +36,10 @@ public class App {
         System.out.println(client1);
         System.out.println(client2);
         Supplier<Event> eventSupplier = () -> con.getBean("event", Event.class);
-        app.logEvent(eventSupplier.get(), LoggerType.INFO);
-        app.logEvent(eventSupplier.get(), LoggerType.ERROR);
-        app.logEvent(eventSupplier.get(), LoggerType.ERROR);
-        app.logEvent(eventSupplier.get(), LoggerType.INFO);
+//        app.logEvent(eventSupplier.get(), LoggerType.INFO);
+//        app.logEvent(eventSupplier.get(), LoggerType.ERROR);
+//        app.logEvent(eventSupplier.get(), LoggerType.ERROR);
+//        app.logEvent(eventSupplier.get(), LoggerType.INFO);
         con.close();
     }
 
@@ -52,5 +52,9 @@ public class App {
         this.client = client;
         this.eventLogger = logger;
         this.loggerMap = loggerMap;
+    }
+
+    public void setEventLogger(EventLogger logger){
+        this.eventLogger=logger;
     }
 }

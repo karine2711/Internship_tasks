@@ -13,10 +13,11 @@
     <import resource="lessons2and3.xml"/>
     <import resource="lessons456.xml"/>
     <import resource="lessons789.xml"/>
-    <context:annotation-config/>
-    <context:component-scan base-package="spring.beans.ecourse" />
+<!--    <context:annotation-config/>-->
+<!--    <context:component-scan base-package="spring.beans.ecourse" />-->
     <bean id="app" class="spring.beans.ecourse.App" c:client-ref="client"
-          c:logger-ref="consoleEventLogger" c:loggerMap-ref="map"/>
+          c:logger-ref="consoleEventLogger" c:loggerMap-ref="map"
+    p:eventLogger-ref="#{T(spring.beans.ecourse.Lessons456.Event).isDay()?'fileLogger': 'consoleEventLogger'}"/>
 
     <util:map id="map" key-type="spring.beans.ecourse.Lessons789.LoggerType"
               value-type="spring.beans.ecourse.Lessons456.EventLogger">

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import spring.beans.ecourse.Lessons456.Event;
 import spring.beans.ecourse.Lessons456.EventLogger;
 
-@Component("consoleEventLogger")
+//@Component("consoleEventLogger")
 public class ConsoleEventLogger implements EventLogger {
 
     @Override

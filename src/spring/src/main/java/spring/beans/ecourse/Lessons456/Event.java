@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
 import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Component
@@ -26,4 +29,9 @@ public class Event {
                 '}' + this.hashCode();
     }
 
+    public static boolean isDay() {
+        LocalDateTime date = LocalDateTime.now();
+        int hour = date.getHour();
+        return hour > 8 && hour < 17;
+    }
 }

@@ -2,18 +2,17 @@ package spring.beans.ecourse.Lessons456;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("cacheFileEventLogger")
 public class CacheFileEventLogger extends FileEventLogger {
-    int cacheSize=3;
 
-    List<Event> cache=new ArrayList<>();
-
-    public CacheFileEventLogger(String fileName) {
-        super(fileName);
-    }
+    int cacheSize = 3;
+    List<Event> cache = new ArrayList<>();
 
     @Override
     public void logEvent(Event event) {
@@ -24,7 +23,6 @@ public class CacheFileEventLogger extends FileEventLogger {
             writeEventsFromCache();
             cache.clear();
         }
-
     }
 
     private void writeEventsFromCache() {
@@ -36,12 +34,12 @@ public class CacheFileEventLogger extends FileEventLogger {
 
     }
 
-    private void destroy(){
+    @PreDestroy
+    private void destroy() {
         System.out.println("Destroy method is called");
-        if(!cache.isEmpty()){
+        if (!cache.isEmpty()) {
             writeEventsFromCache();
         }
     }
-
 
 }

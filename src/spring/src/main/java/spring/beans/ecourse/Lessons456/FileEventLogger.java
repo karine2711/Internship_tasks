@@ -11,11 +11,6 @@ public class FileEventLogger implements EventLogger {
     private String fileName = "/src/spring/src/main/java/spring/beans/ecourse/Lessons456/log.txt";
     private File file;
 
-
-    public FileEventLogger() {
-
-    }
-
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }

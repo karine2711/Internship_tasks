@@ -3,6 +3,7 @@ package spring.beans.ecourse;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import spring.beans.ecourse.Lessons123.Client;
 import spring.beans.ecourse.Lessons456.Event;
@@ -19,8 +20,8 @@ public class App {
     Map<LoggerType, EventLogger> loggerMap;
 
     public static void main(String[] args) {
-        //    ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("ecourse/ecourse.xml");
-        ConfigurableApplicationContext con = new AnnotationConfigApplicationContext("spring.beans.ecourse");
+        ConfigurableApplicationContext con = new ClassPathXmlApplicationContext("ecourse/ecourse.xml");
+        //   ConfigurableApplicationContext con = new AnnotationConfigApplicationContext("spring.beans.ecourse");
         // App app = context.getBean("app", App.class);
         App app = con.getBean("app", App.class);
         Client client = con.getBean("client", Client.class);

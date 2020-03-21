@@ -34,7 +34,7 @@ public class CacheFileEventLogger extends FileEventLogger {
 
     }
 
-    @PreDestroy
+  //  @PreDestroy
     private void destroy() {
         System.out.println("Destroy method is called");
         if (!cache.isEmpty()) {

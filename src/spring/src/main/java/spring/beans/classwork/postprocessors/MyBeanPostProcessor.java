@@ -17,4 +17,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         System.out.println("postProcessAfterInitialization "+beanName);
         return bean;
     }
+     public MyBeanPostProcessor(){
+         System.out.println("-----------------\n HEY I'M CREATED \n ---------");
+     }
 }
